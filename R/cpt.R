@@ -30,8 +30,13 @@
 #'  scale_fill_gradientn(colours = cpt(n = 100))
 #' }
 #' }
-cpt <- function(pal = "mpl_inferno", n = 100, colorRampPalette = FALSE){
+cpt <- function(pal = "mpl_inferno", n = 100, colorRampPalette = FALSE, reverse = FALSE){
   m <- sysdata[[pal]]
+  if(reverse){
+    m$r <- rev(m$r)
+    m$g <- rev(m$g)
+    m$b <- rev(m$b)
+  }
   col <-  rgb(red = m$r, green = m$g, blue = m$b,
               maxColorValue = max(c(max(m$r, na.rm = T),
                                     max(m$g, na.rm = T),
